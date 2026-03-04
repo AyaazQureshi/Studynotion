@@ -18,28 +18,19 @@ const PORT = process.env.PORT || 4000;
 
 //database connect
 database.connect();
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://studynotion-done.vercel.app",
-];
+
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: [
+      "http://localhost:3000",
+      "https://studynotion-done.vercel.app",
+    ],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// 👇 Important for preflight
-app.options("*", cors());
+
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
