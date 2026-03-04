@@ -22,10 +22,7 @@ database.connect();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://studynotion-done.vercel.app",
-    ],
+    origin: true,   // allow any origin that sends request
     credentials: true,
   })
 );
